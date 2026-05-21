@@ -1,8 +1,8 @@
-import { Product } from '../types/Product';
+import type { Product } from '../types/Product';
 
 export const products: Product[] = [
   {
-    id: "brm-001", // ID único para mapeamento no React
+    id: "brm-001",
     name: "Bolsa Térmica Marmita Grande - Dois Andares (Preta)",
     description: "Lancheira com isolamento térmico premium e design funcional de dois compartimentos. Ideal para manter sua dieta organizada no trabalho, faculdade ou academia.",
     benefits: [

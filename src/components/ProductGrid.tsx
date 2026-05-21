@@ -7,10 +7,10 @@ interface Props {
 
 export function ProductGrid({ products }: Props) {
   return (
-    <div className="products-grid">
+    <section className="grid">
       {products.map((p, i) => (
         <ProductCard key={i} product={p} />
       ))}
-    </div>
+    </section>
   );
 }

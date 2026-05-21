@@ -4,11 +4,7 @@ interface Props {
   setCategory: (v: string) => void;
 }
 
-export function Filters({
-  search,
-  setSearch,
-  setCategory,
-}: Props) {
+export function Filters({ search, setSearch }: Props) {
   return (
     <div className="filters">
       <input
@@ -18,21 +14,10 @@ export function Filters({
       />
 
       <div className="buttons">
-        <button onClick={() => setCategory("todos")}>
-          Todos
-        </button>
-
-        <button onClick={() => setCategory("Tecnologia")}>
-          Tecnologia
-        </button>
-
-        <button onClick={() => setCategory("Dia a Dia")}>
-          Dia a Dia
-        </button>
-
-        <button onClick={() => setCategory("Viagem")}>
-          Viagem
-        </button>
+        <button>Todos</button>
+        <button>Tecnologia</button>
+        <button>Dia a Dia</button>
+        <button>Viagem</button>
       </div>
     </div>
   );

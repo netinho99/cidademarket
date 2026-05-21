@@ -18,21 +18,15 @@ export default function App() {
 
   return (
     <main className="container">
-      <header className="page-header">
+      <header className="hero">
         <h1>Cidade Market</h1>
         <p>Curadoria inteligente de ofertas reais</p>
+        <span>
+          Selecionamos produtos com base em valor, utilidade e performance real.
+        </span>
       </header>
-      <header className="hero">
-  <h1>Cidade Market</h1>
-  <p>Curadoria inteligente de ofertas reais</p>
-  <span>Selecionamos produtos com base em valor, utilidade e performance real.</span>
-</header>
 
-      <Filters
-        search={search}
-        setSearch={setSearch}
-        setCategory={() => {}}
-      />
+      <Filters search={search} setSearch={setSearch} />
 
       <ProductGrid products={filtered} />
     </main>

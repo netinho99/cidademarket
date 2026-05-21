@@ -1,16 +1,17 @@
-import type { Product } from "../types/Product";
-import { ProductCard } from "./ProductCard";
+import React from 'react';
+import { Product } from '../types/Product';
+import { ProductCard } from './ProductCard';
 
-interface Props {
+interface ProductGridProps {
   products: Product[];
 }
 
-export function ProductGrid({ products }: Props) {
+export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   return (
-    <section className="grid">
-      {products.map((p, i) => (
-        <ProductCard key={i} product={p} />
+    <section className="product-grid">
+      {products.map(product => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </section>
   );
-}
+};

@@ -1,12 +1,10 @@
-import React from 'react';
-
 interface FiltersProps {
   categories: string[];
   selectedCategory: string;
   onSelectCategory: (category: string) => void;
 }
 
-export const Filters: React.FC<FiltersProps> = ({ categories, selectedCategory, onSelectCategory }) => {
+export const Filters = ({ categories, selectedCategory, onSelectCategory }: FiltersProps) => {
   return (
     <div className="filters-container">
       <span className="filters-label">📍 Bairros:</span>

@@ -1,11 +1,12 @@
 export interface Product {
+  id: string;
   name: string;
   description: string;
   benefits: string[];
   price: string;
   installments: string;
-  category: "Dia a Dia" | "Tecnologia" | "Viagem";
-  rating: number;
+  category: string;
+  rating: string;
   link: string;
   images: string[];
   reason: string;

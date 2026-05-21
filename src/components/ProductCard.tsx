@@ -1,62 +1,60 @@
-import { useState } from "react";
-import type { Product } from "../types/Product";
+import React, { useState } from 'react';
+import { Product } from '../types/Product';
 
-interface Props {
+interface ProductCardProps {
   product: Product;
 }
 
-export function ProductCard({ product }: Props) {
-  const [imgIndex, setImgIndex] = useState(0);
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const [currentImage, setCurrentImage] = useState(0);
 
-  const next = () =>
-    setImgIndex((p) => (p + 1) % product.images.length);
-
-  const prev = () =>
-    setImgIndex((p) =>
-      p === 0 ? product.images.length - 1 : p - 1
-    );
+  // Criação do "endereço digital" do produto
+  const ruaCurta = product.name.split('-')[0].trim(); // Pega apenas a primeira parte do nome
 
   return (
-    <article className="card">
-      <div className="imageWrap">
-        <span className="badge">{product.category}</span>
-
-        <img src={product.images[imgIndex]} />
-
-        {product.images.length > 1 && (
-          <>
-            <button onClick={prev} className="nav left">‹</button>
-            <button onClick={next} className="nav right">›</button>
-          </>
-        )}
+    <article className="card-container">
+      {/* Imagem com sistema simples de Swipe/Navegação */}
+      <div className="image-wrapper">
+        <img 
+          src={product.images[currentImage]} 
+          alt={product.name} 
+          className="product-image"
+        />
+        <div className="badge-bairro">
+          📍 Bairro: {product.category}
+        </div>
       </div>
 
-      <div className="content">
-        <h3>{product.name}</h3>
-
-        <div className="rating">
-          ⭐ {product.rating}/5
+      <div className="card-content">
+        {/* Lógica de Cidade Digital */}
+        <div className="digital-address">
+          <span className="address-line">Rua: {ruaCurta}</span>
+          <span className="address-line">Cidade Market</span>
         </div>
 
-        <p>{product.description}</p>
+        <h3 className="product-title">{product.name}</h3>
+        
+        <div className="rating-container">
+          <span className="star-icon">★</span>
+          <span className="rating-score">{product.rating}</span>
+        </div>
 
-        <ul>
-          {product.benefits.map((b, i) => (
-            <li key={i}>✓ {b}</li>
-          ))}
-        </ul>
+        <p className="editorial-reason">"{product.reason}"</p>
 
-        <div className="price">{product.price}</div>
+        <div className="price-section">
+          <h2 className="price-tag">{product.price}</h2>
+          <span className="discount-tag">{product.installments}</span>
+        </div>
 
-        <button
-          className="btn"
-          onClick={() => window.open(product.link, "_blank")}
+        <a 
+          href={product.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="btn-loja-oficial"
         >
-          Ver na Amazon
-        </button>
-
-        <small>{product.reason}</small>
+          Ver na Loja Oficial
+        </a>
       </div>
     </article>
   );
-}
+};

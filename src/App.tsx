@@ -2,28 +2,26 @@ import { useMemo, useState } from "react";
 import { products } from "./data/products";
 import { ProductGrid } from "./components/ProductGrid";
 import { Filters } from "./components/Filters";
+import "./styles/global.css";
 
 export default function App() {
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
-    return products.filter((p) => {
-      const matchSearch =
-        p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.description.toLowerCase().includes(search.toLowerCase());
+    const q = search.toLowerCase();
 
-      return matchSearch;
-    });
+    return products.filter((p) =>
+      p.name.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q)
+    );
   }, [search]);
 
   return (
-    <main className="container">
+    <main className="app">
       <header className="hero">
         <h1>Cidade Market</h1>
         <p>Curadoria inteligente de ofertas reais</p>
-        <span>
-          Selecionamos produtos com base em valor, utilidade e performance real.
-        </span>
+        <span>Decisões baseadas em valor real, não hype.</span>
       </header>
 
       <Filters search={search} setSearch={setSearch} />

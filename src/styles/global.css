@@ -1,135 +1,130 @@
+:root {
+  --bg-cidade: #f8f9fa; /* Branco gelo */
+  --verde-premium: #0a8f54; /* Confiança e economia */
+  --preto-suave: #1d1d1f; /* Estilo Apple */
+  --cinza-texto: #86868b;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+}
+
 body {
-  margin: 0;
-  font-family: system-ui;
-  background: #0b0f17;
-  color: white;
+  background-color: var(--bg-cidade);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--preto-suave);
 }
 
-.app {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.hero h1 {
-  font-size: 42px;
-  background: linear-gradient(90deg, #3b82f6, #22c55e);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.hero span {
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-/* SEARCH */
-.searchBox input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #1f2937;
-  background: #111827;
-  color: white;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* CARD */
-.card {
-  background: #111827;
+.card-container {
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid #1f2937;
-  transition: 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #3b82f6;
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
-.imageWrap {
+.image-wrapper {
   position: relative;
-  height: 220px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
 }
 
-.imageWrap img {
-  max-width: 100%;
-  max-height: 100%;
+.product-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
-.badge {
+.badge-bairro {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: black;
+  top: 12px;
+  left: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
   padding: 4px 10px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--preto-suave);
 }
 
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.left { left: 10px; }
-.right { right: 10px; }
-
-/* CONTENT */
-.content {
-  padding: 16px;
+.digital-address {
+  font-size: 0.7rem;
+  color: var(--cinza-texto);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
 }
 
-.content h3 {
-  font-size: 16px;
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
 }
 
-.rating {
-  color: #facc15;
-  font-size: 14px;
-}
-
-.price {
-  color: #22c55e;
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #f59e0b;
   font-weight: bold;
-  margin: 10px 0;
 }
 
-.btn {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background: #3b82f6;
+.editorial-reason {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--cinza-texto);
+  border-left: 3px solid var(--verde-premium);
+  padding-left: 8px;
+  margin: 0;
+}
+
+.price-section {
+  margin-top: auto;
+}
+
+.price-tag {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.discount-tag {
+  font-size: 0.8rem;
+  color: var(--verde-premium);
+  font-weight: 600;
+}
+
+.btn-loja-oficial {
+  display: inline-block;
+  text-align: center;
+  background: var(--verde-premium);
   color: white;
-  cursor: pointer;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 12px;
+  transition: background 0.2s ease;
 }
 
-ul {
-  font-size: 12px;
-  color: #94a3b8;
+.btn-loja-oficial:hover {
+  background: #087343;
 }

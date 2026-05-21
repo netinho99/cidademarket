@@ -128,3 +128,128 @@ body {
 .btn-loja-oficial:hover {
   background: #087343;
 }
+/* Header & Glassmorphism */
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: saturate(180%) blur(20px); /* Efeito clássico Apple */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 16px 24px;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.search-input {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #e5e5ea;
+  background: #f5f5f7;
+  width: 300px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--verde-premium);
+  background: #fff;
+}
+
+/* Layout Principal */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.hero-text h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: var(--cinza-texto);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Filtros (Bairros) */
+.filters-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.filters-label {
+  font-weight: 600;
+  color: var(--cinza-texto);
+}
+
+.filters-list {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-btn {
+  background: #fff;
+  border: 1px solid #e5e5ea;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--preto-suave);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  border-color: var(--verde-premium);
+}
+
+.filter-btn.active {
+  background: var(--preto-suave);
+  color: #fff;
+  border-color: var(--preto-suave);
+}
+
+/* Grid Responsivo (A Malha Urbana) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--cinza-texto);
+  font-size: 1.1rem;
+}

@@ -5,20 +5,16 @@ import { Filters } from "./components/Filters";
 
 export default function App() {
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("todos");
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
-      const matchCategory =
-        category === "todos" || p.category === category;
-
       const matchSearch =
         p.name.toLowerCase().includes(search.toLowerCase()) ||
         p.description.toLowerCase().includes(search.toLowerCase());
 
-      return matchCategory && matchSearch;
+      return matchSearch;
     });
-  }, [search, category]);
+  }, [search]);
 
   return (
     <main className="container">
@@ -30,8 +26,7 @@ export default function App() {
       <Filters
         search={search}
         setSearch={setSearch}
-        category={category}
-        setCategory={setCategory}
+        setCategory={() => {}}
       />
 
       <ProductGrid products={filtered} />

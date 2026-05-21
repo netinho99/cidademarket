@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { Product } from '../types/Product';
+import { useState } from 'react';
+import type { Product } from '../types/Product';
 
 interface ProductCardProps {
   product: Product;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const [currentImage, setCurrentImage] = useState(0);
+export const ProductCard = ({ product }: ProductCardProps) => {
+  const [currentImage] = useState(0);
 
-  // Criação do "endereço digital" do produto
-  const ruaCurta = product.name.split('-')[0].trim(); // Pega apenas a primeira parte do nome
+  const ruaCurta = product.name.split('-')[0].trim();
 
   return (
     <article className="card-container">
-      {/* Imagem com sistema simples de Swipe/Navegação */}
       <div className="image-wrapper">
         <img 
           src={product.images[currentImage]} 
@@ -26,7 +24,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className="card-content">
-        {/* Lógica de Cidade Digital */}
         <div className="digital-address">
           <span className="address-line">Rua: {ruaCurta}</span>
           <span className="address-line">Cidade Market</span>

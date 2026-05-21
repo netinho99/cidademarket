@@ -22,10 +22,12 @@ export default function App() {
         <h1>Cidade Market</h1>
         <p>Curadoria inteligente de ofertas reais</p>
       </header>
-<header className="hero">
-  <h1>Curadoria inteligente de ofertas reais</h1>
-  <p>Selecionamos produtos com base em valor, utilidade e performance real — sem hype, só decisão inteligente.</p>
+      <header className="hero">
+  <h1>Cidade Market</h1>
+  <p>Curadoria inteligente de ofertas reais</p>
+  <span>Selecionamos produtos com base em valor, utilidade e performance real.</span>
 </header>
+
       <Filters
         search={search}
         setSearch={setSearch}

@@ -1,32 +1,74 @@
-import { useMemo, useState } from "react";
-import { products } from "./data/products";
-import { ProductGrid } from "./components/ProductGrid";
-import { Filters } from "./components/Filters";
-import "./styles/global.css";
+import React, { useState, useMemo } from 'react';
+import { products } from './data/products';
+import { ProductGrid } from './components/ProductGrid';
+import { Filters } from './components/Filters';
+import './styles/global.css'; // Ou App.css, dependendo do seu setup
 
-export default function App() {
-  const [search, setSearch] = useState("");
+function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
 
-  const filtered = useMemo(() => {
-    const q = search.toLowerCase();
+  // Extrai os "bairros" únicos baseados nos produtos cadastrados
+  const categories = useMemo(() => {
+    const cats = products.map(p => p.category);
+    return Array.from(new Set(cats));
+  }, []);
 
-    return products.filter((p) =>
-      p.name.toLowerCase().includes(q) ||
-      p.description.toLowerCase().includes(q)
-    );
-  }, [search]);
+  // Lógica de busca combinada (texto + categoria)
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                            product.description.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory]);
 
   return (
-    <main className="app">
-      <header className="hero">
-        <h1>Cidade Market</h1>
-        <p>Curadoria inteligente de ofertas reais</p>
-        <span>Decisões baseadas em valor real, não hype.</span>
+    <div className="app-container">
+      {/* Header estilo Apple (Glassmorphism) */}
+      <header className="glass-header">
+        <div className="header-content">
+          <h1 className="brand-logo">Cidade Market</h1>
+          <div className="global-search">
+            <input 
+              type="text" 
+              placeholder="Buscar na cidade..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+          </div>
+        </div>
       </header>
 
-      <Filters search={search} setSearch={setSearch} />
+      <main className="main-content">
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="hero-text">
+            <h2>Decisões inteligentes de compra.</h2>
+            <p>Navegue pelos bairros da nossa cidade digital e descubra produtos com curadoria premium.</p>
+          </div>
+        </section>
 
-      <ProductGrid products={filtered} />
-    </main>
+        {/* Filtros de Navegação */}
+        <Filters 
+          categories={categories} 
+          selectedCategory={selectedCategory} 
+          onSelectCategory={setSelectedCategory} 
+        />
+
+        {/* Grid de Produtos */}
+        {filteredProducts.length > 0 ? (
+          <ProductGrid products={filteredProducts} />
+        ) : (
+          <div className="empty-state">
+            <p>Nenhum produto encontrado neste endereço urbano.</p>
+          </div>
+        )}
+      </main>
+    </div>
   );
 }
+
+export default App;
